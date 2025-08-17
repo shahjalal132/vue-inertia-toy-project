@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -13,8 +14,17 @@ Route::get('/about', function () {
 });
 
 Route::get('/users', function () {
-    // sleep(2);
-    return Inertia::render('Users');
+
+    // get the all users from the database
+    $users = User::all()->map(fn($user) => [
+        'id' => $user->id,
+        'name' => $user->name,
+        'email' => $user->email,
+    ]);
+
+    return Inertia::render('Users', [
+        'users' => $users,
+    ]);
 });
 
 Route::get('/contact', function () {
