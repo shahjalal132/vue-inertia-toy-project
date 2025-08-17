@@ -15,7 +15,6 @@ createInertiaApp({
     setup({ el, App, props, plugin }) {
         createApp({ render: () => h(App, props) })
             .use(plugin)
-            .component('Link', Link)
             .use(ZiggyVue)
             .mount(el);
     },
