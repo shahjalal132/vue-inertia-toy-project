@@ -2,15 +2,18 @@
     <div class="px-4">
         <!-- Header -->
         <header class="flex items-center justify-between p-4">
-            <h2 class="font-black text-center text-light">Logo</h2>
-            <Nav/>
+            <div class="flex items-center gap-2">
+                <h2 class="font-black text-2xl text-center text-light">Logo</h2>
+                <p>Welcome Back, {{ username }}!</p>
+            </div>
+            <Nav />
             <h2>App</h2>
         </header>
 
         <!-- Main content -->
-         <main class="p-4 mt-2">
-            <slot/>
-         </main>
+        <main class="p-4 mt-2">
+            <slot />
+        </main>
     </div>
 </template>
 
@@ -19,6 +22,11 @@ import Nav from '@/shared/Nav.vue';
 export default {
     components: {
         Nav
+    },
+    computed: {
+        username() {
+            return this.$page.props.auth.username;
+        }
     }
 }
 </script>
