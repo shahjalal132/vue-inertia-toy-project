@@ -1,10 +1,12 @@
 <template>
+    <Head>
+        <meta name="description" content="Information about the app" head-key="description" />
+    </Head>
     <div class="px-4">
         <!-- Header -->
         <header class="flex items-center justify-between p-4">
             <div class="flex items-center gap-2">
-                <!-- <h2 class="font-black text-2xl text-center text-light">Logo</h2> -->
-                 <input type="text" value="jalal" class="border border-white rounded p-2 text-white">
+                <h2 class="font-black text-2xl text-center text-light">Logo</h2>
                 <p>Welcome Back, {{ username }}!</p>
             </div>
             <Nav />
@@ -20,9 +22,11 @@
 
 <script>
 import Nav from '@/shared/Nav.vue';
+import { Head } from '@inertiajs/vue3';
 export default {
     components: {
-        Nav
+        Nav,
+        Head
     },
     computed: {
         username() {
