@@ -19,11 +19,6 @@
         </nav>
     </div>
 </template>
-<script>
+<script setup>
 import NavLink from '@/shared/NavLink.vue';
-export default {
-    components: {
-        NavLink
-    }
-}
 </script>

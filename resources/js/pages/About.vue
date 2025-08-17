@@ -3,11 +3,6 @@
         <h2>About</h2>
     </layout>
 </template>
-<script>
+<script setup>
 import Layout from '@/shared/Layout.vue';
-export default {
-    components: {
-        Layout
-    }
-}
 </script>
