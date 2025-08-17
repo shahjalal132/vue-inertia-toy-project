@@ -3,7 +3,8 @@
         <!-- Header -->
         <header class="flex items-center justify-between p-4">
             <div class="flex items-center gap-2">
-                <h2 class="font-black text-2xl text-center text-light">Logo</h2>
+                <!-- <h2 class="font-black text-2xl text-center text-light">Logo</h2> -->
+                 <input type="text" value="jalal" class="border border-white rounded p-2 text-white">
                 <p>Welcome Back, {{ username }}!</p>
             </div>
             <Nav />

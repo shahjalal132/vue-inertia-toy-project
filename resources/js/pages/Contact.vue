@@ -1,9 +1,13 @@
 <template>
-    <layout>
+    <div>
         <h2>Contact</h2>
-    </layout>
+    </div>
 </template>
 
 <script setup>
 import Layout from '@/shared/Layout.vue';
+
+defineOptions({
+    layout: Layout
+});
 </script>
