@@ -3,9 +3,16 @@
     <Head title="Users" />
 
     <h2 class="text-2xl font-semibold">Users:</h2>
+
+    <!-- flash message -->
+    <div v-if="flash.success" class="mt-4 p-3 w-75 rounded-md bg-green-100 text-green-700 border border-green-300">
+        {{ flash.success }}
+    </div>
+
     <div class="mt-5">
-        <Link href="/users/create" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-            Create User
+        <Link href="/users/create"
+            class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+        Create User
         </Link>
     </div>
 
@@ -67,9 +74,9 @@
 
 <script setup>
 import Layout from '@/shared/Layout.vue';
-import { Head, Link, router } from '@inertiajs/vue3';
+import { Head, Link, router, usePage } from '@inertiajs/vue3';
 import Pagination from '@/shared/Pagination.vue';
-import { ref, watch } from 'vue';
+import { ref, watch, onMounted } from 'vue';
 
 defineOptions({
     layout: Layout
@@ -77,8 +84,20 @@ defineOptions({
 
 const props = defineProps({
     users: Object,
-    filters: Object, // to persist search value from backend
+    filters: Object,
 })
+
+// flash message
+const { props: pageProps } = usePage();
+const flash = pageProps.flash;
+
+onMounted(() => {
+  if (flash.success) {
+    setTimeout(() => {
+      flash.success = null; // hide after 3s
+    }, 3000);
+  }
+});
 
 let search = ref(props.filters?.search || '');
 
