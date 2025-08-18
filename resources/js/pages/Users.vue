@@ -18,7 +18,7 @@
                                 d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                         </svg>
                     </div>
-                    <input type="text" id="table-search"
+                    <input type="text" v-model="search" id="table-search"
                         class="block pt-2 pb-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Search for items">
                 </div>
@@ -62,14 +62,26 @@
 
 <script setup>
 import Layout from '@/shared/Layout.vue';
-import { Head, Link } from '@inertiajs/vue3';
+import { Head, Link, router } from '@inertiajs/vue3';
 import Pagination from '@/shared/Pagination.vue';
+import { ref, watch } from 'vue';
 
 defineOptions({
     layout: Layout
 });
 
-defineProps({
-    users: Object
+const props = defineProps({
+    users: Object,
+    filters: Object, // to persist search value from backend
 })
+
+let search = ref(props.filters?.search || '');
+
+// Watch for changes in search and update query
+watch(search, (value) => {
+    router.get('/users', { search: value }, {
+        preserveState: true,
+        replace: true,
+    });
+});
 </script>
