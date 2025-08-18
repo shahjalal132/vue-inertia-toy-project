@@ -57,15 +57,15 @@ Route::middleware('auth')->group(function () {
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
 
-
-    Route::get('/', function () {
-        return Inertia::render('Home');
-    })->name('home');
-
     Route::get('/about', function () {
         sleep(1);
         return Inertia::render('About');
     });
+
+    Route::get('/home', function () {
+        sleep(1);
+        return Inertia::render('Home');
+    })->name('home');
 
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
     Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
