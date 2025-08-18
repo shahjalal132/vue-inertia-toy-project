@@ -15,12 +15,13 @@ Route::get('/about', function () {
 
 Route::get('/users', function () {
 
-    // get the all users from the database
-    $users = User::all()->map(fn($user) => [
-        'id' => $user->id,
-        'name' => $user->name,
-        'email' => $user->email,
-    ]);
+    $users = User::paginate(10);
+    
+    // $users = User::paginate(10)->map(fn($user) => [
+    //     'id' => $user->id,
+    //     'name' => $user->name,
+    //     'email' => $user->email,
+    // ]);
 
     return Inertia::render('Users', [
         'users' => $users,
