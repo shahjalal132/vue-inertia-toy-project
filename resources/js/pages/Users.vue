@@ -54,16 +54,8 @@
         </table>
 
         <!-- pagination -->
-        <div class="flex justify-center mt-6 space-x-1">
-            <template v-for="link in users.links" :key="link.label">
-                <Link v-if="link.url" :href="link.url" v-html="link.label" class="px-3 py-1 border rounded-md" :class="[
-                    link.active
-                        ? 'bg-blue-600 text-white border-blue-600'
-                        : 'bg-white text-gray-700 hover:bg-gray-100 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600'
-                ]" />
-                <span v-else v-html="link.label"
-                    class="px-3 py-1 text-gray-400 border rounded-md cursor-not-allowed dark:border-gray-600" />
-            </template>
+        <div class="mt-6">
+            <Pagination :links="users.links" />
         </div>
     </div>
 </template>
@@ -71,6 +63,7 @@
 <script setup>
 import Layout from '@/shared/Layout.vue';
 import { Head, Link } from '@inertiajs/vue3';
+import Pagination from '@/shared/Pagination.vue';
 
 defineOptions({
     layout: Layout
