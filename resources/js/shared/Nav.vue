@@ -4,7 +4,7 @@
         <nav>
             <ul class="flex space-x-4 list-unstyled">
                 <li>
-                    <NavLink href="/" :active="$page.component === 'Home'">Home</NavLink>
+                    <NavLink href="/home" :active="$page.component === 'Home'">Home</NavLink>
                 </li>
                 <li>
                     <NavLink href="/about" :active="$page.component === 'About'">About</NavLink>
