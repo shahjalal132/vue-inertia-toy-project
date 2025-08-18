@@ -3,6 +3,11 @@
     <Head title="Users" />
 
     <h2 class="text-2xl font-semibold">Users:</h2>
+    <div class="mt-5">
+        <Link href="/users/create" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+            Create User
+        </Link>
+    </div>
 
     <div class="mt-5">
         <!-- search -->
