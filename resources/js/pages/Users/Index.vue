@@ -78,6 +78,7 @@ import { Head, Link, router, usePage } from '@inertiajs/vue3';
 import Pagination from '@/shared/Pagination.vue';
 import { ref, watch, onMounted } from 'vue';
 import debounce from 'lodash/debounce';
+// import throttle from 'lodash/throttle';
 
 defineOptions({
     layout: Layout
@@ -109,6 +110,14 @@ const updateSearch = debounce((value) => {
         replace: true,
     });
 }, 300);
+
+// throttle search
+/* const updateSearch = throttle((value) => {
+    router.get('/users', { search: value }, {
+        preserveState: true,
+        replace: true,
+    });
+}, 500); */
 
 // Watch for changes in search and update query
 watch(search, (value) => updateSearch(value));
