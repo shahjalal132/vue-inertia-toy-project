@@ -77,6 +77,7 @@ import Layout from '@/shared/Layout.vue';
 import { Head, Link, router, usePage } from '@inertiajs/vue3';
 import Pagination from '@/shared/Pagination.vue';
 import { ref, watch, onMounted } from 'vue';
+import debounce from 'lodash/debounce';
 
 defineOptions({
     layout: Layout
@@ -92,20 +93,23 @@ const { props: pageProps } = usePage();
 const flash = pageProps.flash;
 
 onMounted(() => {
-  if (flash.success) {
-    setTimeout(() => {
-      flash.success = null; // hide after 3s
-    }, 3000);
-  }
+    if (flash.success) {
+        setTimeout(() => {
+            flash.success = null; // hide after 3s
+        }, 3000);
+    }
 });
 
 let search = ref(props.filters?.search || '');
 
-// Watch for changes in search and update query
-watch(search, (value) => {
+// debounce search
+const updateSearch = debounce((value) => {
     router.get('/users', { search: value }, {
         preserveState: true,
         replace: true,
     });
-});
+}, 300);
+
+// Watch for changes in search and update query
+watch(search, (value) => updateSearch(value));
 </script>
