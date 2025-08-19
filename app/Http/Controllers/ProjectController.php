@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Project;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -12,7 +13,18 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        return Inertia::render('projects/Index');
+
+        // Fetch projects from the database
+        $projects = Project::all()->map(fn($project) => [
+            'id' => $project->id,
+            'name' => $project->name,
+            'comments_count' => $project->comments_count,
+            'user_read' => $project->user_read,
+        ]);
+
+        return Inertia::render('projects/Index', [
+            'projects' => $projects,
+        ]);
     }
 
     /**

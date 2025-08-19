@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->integer('comments_count')->nullable()->default(0);
+            $table->integer('user_read')->nullable()->default(0);
             $table->timestamps();
         });
     }
