@@ -15,7 +15,7 @@ class ProjectController extends Controller
     {
 
         // Fetch projects from the database
-        $projects = Project::all()->map(fn($project) => [
+        $projects = fn() => Project::all()->map(fn($project) => [
             'id' => $project->id,
             'name' => $project->name,
             'comments_count' => $project->comments_count,
