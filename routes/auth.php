@@ -74,6 +74,7 @@ Route::middleware('auth')->group(function () {
 
     // Projects routes
     Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
+    Route::get('/projects/{id}', [ProjectController::class, 'show'])->name('projects.show');
 
     Route::get('/contact', function () {
         return Inertia::render('Contact');
