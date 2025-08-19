@@ -27,7 +27,7 @@ class UserController extends Controller
                 'email' => $user->email,
             ]);
 
-        return Inertia::render('Users/Index', [
+        return Inertia::render('users/Index', [
             'users' => $users,
             'filters' => $request->only(['search']),
         ]);
@@ -39,7 +39,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Users/Create');
+        return Inertia::render('users/Create');
     }
 
     /**

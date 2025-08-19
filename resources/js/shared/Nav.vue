@@ -10,7 +10,10 @@
                     <NavLink href="/about" :active="$page.component === 'About'">About</NavLink>
                 </li>
                 <li>
-                    <NavLink href="/users" :active="$page.component === 'Users/Index' || $page.component === 'Users/Create'">Users</NavLink>
+                    <NavLink href="/projects" :active="$page.component === 'projects/Index'">Projects</NavLink> 
+                </li>
+                <li>
+                    <NavLink href="/users" :active="$page.component === 'users/Index' || $page.component === 'users/Create'">Users</NavLink>
                 </li>
                 <li>
                     <NavLink href="/contact" :active="$page.component === 'Contact'">Contact</NavLink>
