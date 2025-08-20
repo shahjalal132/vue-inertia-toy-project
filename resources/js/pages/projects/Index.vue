@@ -20,7 +20,7 @@
         <div v-if="projects.length" class="space-y-4">
             <div v-for="project in projects" :key="project.id"
                 class="bg-white shadow-md rounded-2xl p-5 hover:shadow-lg transition">
-                <Link :href="route('projects.show', project.id)" class="grid grid-cols-3 items-center gap-4">
+                <Link :href="route('projects.show', project.id)" prefetch="hover" class="grid grid-cols-3 items-center gap-4">
                 <!-- Project Name -->
                 <h3 class="text-xl font-semibold text-gray-900">
                     {{ project.name }}

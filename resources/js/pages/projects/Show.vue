@@ -4,7 +4,7 @@
 
     <div class="max-w-3xl mx-auto px-4 py-8">
         <!-- Back button -->
-        <Link :href="route('projects.index')"
+        <Link :href="route('projects.index')" prefetch="mount"
             class="inline-flex items-center text-gray-600 hover:text-indigo-600 transition mb-6">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
             stroke="currentColor">
